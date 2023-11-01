@@ -1,0 +1,60 @@
+ul{
+    width: 100%;
+
+    margin: 20px;
+    
+}
+
+#exercisesButton {
+  display: none;
+}
+
+
+/* Show the exercises button only if it's the first list item */
+.list-item:first-child #exercisesButton {
+  display: block;
+}
+
+
+span{
+    font-weight: bold;
+
+    font-size: 20px;
+    color: #333;
+}
+
+.list-item {
+    position: relative;
+    transition: transform 0.3s;
+  }
+
+  .list-item:hover {
+    animation: moveListItem 0.3s forwards;
+  }
+
+  @keyframes moveListItem {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(10px);
+    }
+  }
+
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .fade-in-animation {
+    animation: fade-in 4s infinite;
+  }
+  
+  footer {
+    margin-top: auto; 
+  }

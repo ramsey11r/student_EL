@@ -1,0 +1,51 @@
+<!-- component -->
+<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
+<link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+
+<section class="pt-16" style="margin: auto !important; margin-bottom: 150px !important;">
+<div class="w-full lg:w-4/12 px-4 mx-auto" style="width: 600px !important;" >
+  <div class="relative flex flex-col min-w-0 break-words  bg-card print:w-auto print:p-0 print:rounded-none print:shadow-none print:bg-transparent ring-2 ring-primary overflow-visible w-full mb-6 shadow-xl rounded-lg mt-16">
+    <div class="px-6" >
+      <div class="flex flex-wrap justify-center">
+        <div class="w-full px-4 flex justify-center">
+          <div class="relative">
+            <img alt="..." src="https://demos.creative-tim.com/notus-js/assets/img/team-2-800x800.jpg" class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px">
+          </div>
+        </div>
+      
+      </div>
+   
+      <div class="text-center mt-8" *ngFor="let answ of answerList">
+        <img class="mb-2" src="https://www.pngmart.com/files/21/Admin-Profile-PNG-Clipart.png" style="border-radius: 50%; width: 110px; height: 95px; margin: auto;">
+       
+     
+       
+      <div class="text-center mt-7" >
+        <h3 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+          Admin
+        </h3>
+        
+        
+        <div class="mb-2 text-blueGray-800 mt-10 text-primary-600" style="font-weight: bold !important; font-size: 25px !important;">
+          Question
+        </div>
+        <div class="mt-2 text-md text-secondary">
+            {{answ.subjectt}}
+          </div>
+       
+      </div>
+      <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
+        <div class="flex flex-wrap justify-center">
+          <div class="w-full lg:w-9/12 px-4">
+            <p class="mt-2 text-md text-secondary" style="height: 105px !important; overflow: auto !important;">
+                {{answ.answer}}
+            </p>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</section>

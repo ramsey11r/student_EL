@@ -1,0 +1,355 @@
+<div class="container">
+  <div
+  class="absolute inset-0 flex flex-col min-w-0 overflow-y-auto"
+  cdkScrollable>
+  
+   <!-- Header -->
+   <div class="relative flex-0 py-8 px-4 sm:p-16 overflow-hidden bg-gray-800 dark">
+    <!-- Background - @formatter:off -->
+    <!-- Rings -->
+    <svg class="absolute inset-0 pointer-events-none"
+         viewBox="0 0 960 540" width="100%" height="100%" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+        <g class="text-gray-700 opacity-25" fill="none" stroke="currentColor" stroke-width="100">
+            <circle r="234" cx="196" cy="23"></circle>
+            <circle r="234" cx="790" cy="491"></circle>
+        </g>
+    </svg>
+    <!-- @formatter:on -->
+    <div class="mt-1 text-4xl sm:text-7xl relative flex flex-col items-center">
+    <div class="mt-1 text-4xl sm:text-7xl relative flex flex-col items-center text-primary-600" *ngFor="let us of listapp">
+      <h1 >{{us.appname}} Academy</h1></div>
+        <div class="mt-1 text-4xl sm:text-7xl font-extrabold tracking-tight leading-tight text-center">
+            What do you want to learn today?
+        </div>
+        <div class="max-w-2xl mt-6 sm:text-2xl text-center tracking-tight text-secondary">
+            Our courses will step you through the process of a building small applications, or adding new features to existing applications.
+        </div>
+    </div>
+  </div>
+  
+  <!-- Main -->
+  <div class="flex flex-auto p-6 sm:p-10">
+  
+    <div class="flex flex-col flex-auto w-full max-w-xs sm:max-w-5xl mx-auto">
+      
+        <!-- Filters -->
+        <div class="flex flex-col flex-auto w-full max-w-xs sm:max-w-5xl mx-auto">
+  
+          <div class="flex flex-col sm:flex-row items-center justify-between w-full max-w-xs sm:max-w-none">
+              <mat-form-field
+                  class="w-full sm:w-36"
+                  [subscriptSizing]="'dynamic'">
+                  <mat-select
+                  [(ngModel)]="selectedCourseType" (selectionChange)="filterByCategory($event)">
+                  <mat-option [value]="'all'">All</mat-option>
+                  <ng-container *ngFor="let c of uniqueCourseTypes">
+                    <mat-option [value]="c">{{c}}</mat-option>
+                  </ng-container>
+                  </mat-select>
+              </mat-form-field>
+              <mat-form-field
+                  class="w-full sm:w-72 mt-4 sm:mt-0 sm:ml-4"
+                  [subscriptSizing]="'dynamic'">
+                  <mat-icon
+                  matPrefix
+                  class="icon-size-5"
+                  [svgIcon]="'heroicons_solid:search'"></mat-icon>
+              <input
+              [(ngModel)]="searchTerm"
+              (input)="searchCours()"
+                  placeholder="Search by title or sub_title"
+                  matInput
+                  #query>
+          </mat-form-field>
+          <div
+          class="mt-8 sm:mt-0 sm:ml-auto"
+          [color]="'primary'"
+         >
+         
+        </div>
+                 
+          
+          </div>
+          
+           
+            
+       </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-50 sm:mt-15">
+  
+    <div class="max-w-xs bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 ring-2 ring-primary overflow-visible" *ngFor="let cour of cours_list" [class.hide-element]="shouldHideElement(cour)">
+      <div
+      class="py-0.5 px-3 rounded-full text-sm font-semibold" style="width:fit-content !important;margin-top:7px !important"
+        [ngClass]="{'text-blue-500 bg-blue-100 dark:text-blue-50 dark:bg-blue-800': cour.type_cour === 'Web',
+                    'text-green-800 bg-green-100 dark:text-green-50 dark:bg-green-500': cour.type_cour  === 'Mobile',
+                    'text-pink-800 bg-pink-100 dark:text-pink-50 dark:bg-pink-500': cour.type_cour  === 'Cloud',
+                    'text-amber-500 bg-amber-900 dark:text-amber-50 dark:bg-amber-500': cour.type_cour  === 'Other IT',
+                    'text-red-800 bg-red-100 dark:text-red-50 dark:bg-red-500': cour.type_cour  === 'DevOps',
+                    'text-yellow-500 bg-yellow-100 dark:text-yellow-50 dark:bg-yellow-800': cour.type_cour  === 'ML',
+                    'text-teal-800 bg-teal-100 dark:text-teal-50 dark:bg-teal-500': cour.type_cour  === 'IA',
+                    'text-purple-500 bg-purple-100 dark:text-purple-50 dark:bg-purple-800': cour.type_cour  === 'Data science',
+                    'text-lime-500 bg-lime-100 dark:text-lime-50 dark:bg-lime-800': cour.type_cour  === 'data mining',
+                    'text-rose-800 bg-rose-100 dark:text-rose-50 dark:bg-rose-500': cour.type_cour  === 'Security',
+                    'text-emerald-800 bg-emerald-100 dark:text-emerald-50 dark:bg-emerald-500': cour.type_cour  === 'Graphic design',
+                    'text-violet-800 bg-violet-100 dark:text-violet-50 dark:bg-violet-500': cour.type_cour  === 'Embedded system',
+                    'text-sky-500 bg-sky-200 dark:text-sky-50 dark:bg-sky-800': cour.type_cour  === 'English',
+                    'text-fuchsia-800 bg-fuchsia-100 dark:text-fuchsia-50 dark:bg-fuchsia-500': cour.type_cour  === 'French',
+                    'text-emerald-500 bg-emerald-300 dark:text-emerald-50 dark:bg-emerald-800': cour.type_cour  === 'Arabic',
+                    'text-lime-900 bg-lime-400 dark:text-lime-100 dark:bg-lime-600': cour.type_cour  === 'Spanish',
+                    'text-red-500 bg-red-300 dark:text-red-50 dark:bg-red-800': cour.type_cour  === 'German',
+                    'text-fuchsia-500 bg-fuchsia-200 dark:text-fuchsia-50 dark:bg-fuchsia-800': cour.type_cour  === 'Italien',
+                    'text-rosybrown-800 bg-rosybrown-100 dark:text-rosybrown-50 dark:bg-rosybrown-500': cour.type_cour  === 'Other Languages',
+                    'text-rose-400 bg-rose-200 dark:text-rose-50 dark:bg-rose-800': cour.type_cour  === 'Physics',
+                    'text-pink-500 bg-pink-200 dark:text-pink-50 dark:bg-pink-500': cour.type_cour  === 'Chemistry',
+                    'text-violet-500 bg-violet-200 dark:text-violet-100 dark:bg-violet-900': cour.type_cour  === 'Biology',
+                    'text-indigo-500 bg-indigo-200 dark:text-indigo-50 dark:bg-indigo-500': cour.type_cour  === 'Engineering',
+                    'text-cyan-400 bg-cyan-200 dark:text-cyan-50 dark:bg-cyan-500': cour.type_cour  === 'Astronomy',
+                    'text-teal-500 bg-teal-200 dark:text-teal-50 dark:bg-teal-500': cour.type_cour  === 'Other sience',
+                    'text-yellow-700 bg-yellow-300 dark:text-yellow-50 dark:bg-yellow-500': cour.type_cour  === 'Business Management',
+                    'text-orange-400 bg-orange-200 dark:text-orange-50 dark:bg-orange-500': cour.type_cour  === 'Entrepreneurship',
+                    'text-stone-500 bg-stone-200 dark:text-stone-50 dark:bg-stone-500': cour.type_cour  === 'Marketing',
+                    'text-indigo-300 bg-amber-200 dark:text-indigo-50 dark:bg-indigo-500': cour.type_cour  === 'Finance',
+                    'text-lime-700 bg-lime-200 dark:text-lime-600 dark:bg-lime-800': cour.type_cour  === 'Accounting',
+                    'text-yellow-800 bg-yellow-600 dark:text-yellow-300 dark:bg-yellow-800': cour.type_cour  === 'Leadership',
+                    'text-orange-700 bg-orange-500 dark:text-orange-200 dark:bg-orange-600': cour.type_cour  === 'Economics',
+                    'text-purple-700 bg-purple-500 dark:text-purple-300 dark:bg-purple-500': cour.type_cour  === 'Other Business'}">
+        {{cour.type_cour}}
+      </div>
+      
+        <img   class="rounded-full"  [src]="_authService.PhotoUrl + cour.imagee.substring(12)" alt="Card cover image"style="width:130px !important;margin:auto !important; height: 130px !important;">
+  
+      <div class="p-4"> 
+      
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-primary-600" style="text-align: center !important; text-transform: uppercase !important;">{{ cour.courname }}</h5>
+    
+        <div class="text-secondary leading-tight mt-1" style="height: 45px !important; overflow: auto !important; text-align: center !important;">{{cour.sub_title}}</div>
+        <div class="w-12 h-1 my-6 border-t-2"></div>
+        <div class="flex items-center leading-5 text-md text-secondary">
+          <mat-icon
+              class="icon-size-5 text-hint"
+              [svgIcon]="'heroicons_solid:clock'"></mat-icon>
+          <div style="font-weight: bold">{{cour.duration}} minutes</div>
+          <mat-icon  style="margin-left: 70px;"
+          class="icon-size-5 text-hint"
+          svgIcon="heroicons_outline:currency-dollar"></mat-icon> 
+          <div class="ml-1.5" style="font-weight: bold;margin-left: 70px; display: flex !important;"> {{cour.price}} Dollars </div>
+     
+      </div>
+      <span class="inline-flex items-center">
+
+      <button  style="margin-right:20px  ; display: flex !important;" id="b1" type="button" (click)="SendCourNameToPaymentPage(cour.courname, cour.user)" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 move-left">
+        Start Learn
+        <svg aria-hidden="true" class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+        </svg>
+      </button>
+
+
+      <button id="b2" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 flash-animation" style="margin-left: 20px;" (click)="SendCourNameToTestPage(cour.courname)">
+        Tasks 
+      </button>
+
+      </span>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  </div>
+  
+  </div>
+  <footer  class="bg-white dark:bg-gray-900 w-full" style="margin-top: 60px !important; display: flex !important; justify-content: center !important; align-items: center !important;"  *ngFor="let qa of list">
+    <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+      <div class="lg:flex lg:items-start lg:gap-8">
+        <div class="text-teal-600 dark:text-teal-300">
+          <svg
+            class="h-8"
+            viewBox="0 0 28 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M0.41 10.3847C1.14777 7.4194 2.85643 4.7861 5.2639 2.90424C7.6714 1.02234 10.6393 0 13.695 0C16.7507 0 19.7186 1.02234 22.1261 2.90424C24.5336 4.7861 26.2422 7.4194 26.98 10.3847H25.78C23.7557 10.3549 21.7729 10.9599 20.11 12.1147C20.014 12.1842 19.9138 12.2477 19.81 12.3047H19.67C19.5662 12.2477 19.466 12.1842 19.37 12.1147C17.6924 10.9866 15.7166 10.3841 13.695 10.3841C11.6734 10.3841 9.6976 10.9866 8.02 12.1147C7.924 12.1842 7.8238 12.2477 7.72 12.3047H7.58C7.4762 12.2477 7.376 12.1842 7.28 12.1147C5.6171 10.9599 3.6343 10.3549 1.61 10.3847H0.41ZM23.62 16.6547C24.236 16.175 24.9995 15.924 25.78 15.9447H27.39V12.7347H25.78C24.4052 12.7181 23.0619 13.146 21.95 13.9547C21.3243 14.416 20.5674 14.6649 19.79 14.6649C19.0126 14.6649 18.2557 14.416 17.63 13.9547C16.4899 13.1611 15.1341 12.7356 13.745 12.7356C12.3559 12.7356 11.0001 13.1611 9.86 13.9547C9.2343 14.416 8.4774 14.6649 7.7 14.6649C6.9226 14.6649 6.1657 14.416 5.54 13.9547C4.4144 13.1356 3.0518 12.7072 1.66 12.7347H0V15.9447H1.61C2.39051 15.924 3.154 16.175 3.77 16.6547C4.908 17.4489 6.2623 17.8747 7.65 17.8747C9.0377 17.8747 10.392 17.4489 11.53 16.6547C12.1468 16.1765 12.9097 15.9257 13.69 15.9447C14.4708 15.9223 15.2348 16.1735 15.85 16.6547C16.9901 17.4484 18.3459 17.8738 19.735 17.8738C21.1241 17.8738 22.4799 17.4484 23.62 16.6547ZM23.62 22.3947C24.236 21.915 24.9995 21.664 25.78 21.6847H27.39V18.4747H25.78C24.4052 18.4581 23.0619 18.886 21.95 19.6947C21.3243 20.156 20.5674 20.4049 19.79 20.4049C19.0126 20.4049 18.2557 20.156 17.63 19.6947C16.4899 18.9011 15.1341 18.4757 13.745 18.4757C12.3559 18.4757 11.0001 18.9011 9.86 19.6947C9.2343 20.156 8.4774 20.4049 7.7 20.4049C6.9226 20.4049 6.1657 20.156 5.54 19.6947C4.4144 18.8757 3.0518 18.4472 1.66 18.4747H0V21.6847H1.61C2.39051 21.664 3.154 21.915 3.77 22.3947C4.908 23.1889 6.2623 23.6147 7.65 23.6147C9.0377 23.6147 10.392 23.1889 11.53 22.3947C12.1468 21.9165 12.9097 21.6657 13.69 21.6847C14.4708 21.6623 15.2348 21.9135 15.85 22.3947C16.9901 23.1884 18.3459 23.6138 19.735 23.6138C21.1241 23.6138 22.4799 23.1884 23.62 22.3947Z"
+              fill="currentColor"
+            />
+          </svg>
+        </div>
+  
+        <div
+          class="mt-8 grid grid-cols-2 gap-8 lg:mt-0 lg:grid-cols-5 lg:gap-y-16"
+        >
+          <div class="col-span-2">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+                E-Learning Apps
+              </h2>
+  
+              <div class="mt-4 text-gray-500 dark:text-gray-400">
+                Unlocking Knowledge, One Lesson at a Time!
+              </div>
+            </div>
+          </div>
+  
+          <div class="col-span-2 lg:col-span-3 lg:flex lg:items-end">
+            <form class="w-full">
+             
+  
+              <div
+                class="border border-gray-100 p-2 focus-within:ring dark:border-gray-800 sm:flex sm:items-center sm:gap-4"
+             *ngFor="let er of email_List" >
+                <input readonly
+                  type="email"
+                  id="UserEmail"
+                  value="Unlock new horizons through our professional collaboration !"
+                 
+                  class="text-black w-full border-none focus:border-transparent focus:ring-transparent dark:bg-gray-900 dark:text-white sm:text-sm"
+                />
+  
+                <a href="mailto:{{er.email}}" class="animate-pulse animate-infinite animate-ease-in mt-1 w-full bg-teal-500 px-6 py-3 text-sm font-bold uppercase tracking-wide text-white transition-none hover:bg-teal-600 sm:mt-0 sm:w-auto sm:shrink-0">
+                  Collaborate
+                </a>
+                
+              </div>
+            </form>
+          </div>
+  
+          <div class="col-span-2 sm:col-span-1" style="margin-left: 50px !important;">
+            <button (click)="about()" class="font-medium text-primary-600">About-us</button>
+  
+         
+          </div>
+  
+          <div class="col-span-2 sm:col-span-1">
+            <button (click)="partner()" class="font-medium text-primary-600">Partners and Affiliates</button>
+  
+          
+          </div>
+  
+          <div class="col-span-2 sm:col-span-1" style="margin-left: 30px !important;">
+            <button (click)="contact()" class="font-medium text-primary-600">Contact-us !</button>
+           
+          </div>
+  
+          <div class="col-span-2 sm:col-span-1">
+            <button (click)="meet()" class="font-medium text-primary-600">Meet the Team</button>
+  
+        
+          </div>
+  
+          <div class="col-span-2 sm:col-span-1">
+            <button (click)="profil()" class="font-medium text-primary-600">Your profil</button>
+  
+            
+          </div>
+  
+      
+  
+         
+  
+          <ul
+          class="col-span-2 flex justify-start gap-6 lg:col-span-5" style="margin: auto !important;"
+     >
+          <li>
+            <a
+              href={{qa.facebook}}
+              rel="noreferrer"
+              target="_blank"
+              class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+            >
+              <span class="sr-only">Facebook</span>
+
+              <svg
+                class="h-6 w-6 hover:text-blue-800"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+              <path
+              d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+              </svg>
+            </a>
+          </li>
+
+          <li>
+            <a
+            href={{qa.instagram}}
+              rel="noreferrer"
+              target="_blank"
+              class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+            >
+              <span class="sr-only">Instagram</span>
+
+              <svg
+                class="h-6 w-6 hover:text-red-500"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+              <path
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+              </svg>
+            </a>
+          </li>
+
+          <li>
+            <a
+            href={{qa.linkedin}}
+              rel="noreferrer"
+              target="_blank"
+              class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+            >
+              <span class="sr-only">LinkedIn</span>
+
+              <svg
+              
+                class="h-6 w-6 hover:text-blue-500" 
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+              <path
+          d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+         
+        </svg>
+            </a>
+          </li>
+
+          <li>
+            <a
+            href={{qa.github}}
+              rel="noreferrer"
+              target="_blank"
+              class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+            >
+              <span class="sr-only">GitHub</span>
+
+              <svg
+                class="h-6 w-6 hover:text-dark-800"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+              <path
+              d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+              </svg>
+            </a>
+          </li>
+
+      
+        </ul>
+        </div>
+      </div>
+  
+      <div class="mt-8 border-t border-gray-100 pt-8 dark:border-gray-800" style="margin-left: 430px !important;">
+        <div class="sm:flex sm:justify-between">
+          <div class="text-xs text-gray-500 dark:text-gray-400 text-center">
+            &copy; {{currentYear}}. E-Learning . All rights reserved.
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>

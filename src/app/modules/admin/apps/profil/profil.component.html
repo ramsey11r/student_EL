@@ -1,0 +1,92 @@
+<div
+    class="absolute inset-0 min-w-0 text-center overflow-auto print:overflow-visible"
+    cdkScrollable>
+
+    <!-- Main -->
+    <div class="inline-block p-6 sm:p-10 text-left print:p-0">
+
+        <!-- Invoice -->
+        <div class="w-240 min-w-240 p-16 rounded-2xl shadow bg-card print:w-auto print:p-0 print:rounded-none print:shadow-none print:bg-transparent ring-2 ring-primary overflow-visible">
+
+            <div class="flex items-start">
+                <div class="grid grid-rows-2 place-items-start gap-y-12">
+                    <div class="grid auto-cols-max grid-flow-col gap-x-8">
+                        <div class="place-self-center w-24" *ngFor="let us of listuser" >
+                            <img [src]="_authService.PhotoUrl + us.image.substring(12)" alt="" style="border-radius: 50%;">
+       
+                        </div>
+                        <div class="pl-10 border-l text-md" *ngFor="let us of listuser">
+                            <div class="font-medium">
+                                Full name : <labe  class="mt-2 text-md text-secondary">{{us.username}}</labe></div>
+                            <div class="font-medium"> Date Of Birth :<labe  class="mt-2 text-md text-secondary"> {{us.date_of_birth |date:'dd MMM YYYY '}}</labe></div>
+                            <div class="font-medium">Email :<labe  class="mt-2 text-md text-secondary"> {{us.email}}</labe></div>
+                            <div class="font-medium">Phone :<labe  class="mt-2 text-md text-secondary"> {{us.phone}}</labe></div>
+                            <div class="font-medium">Profession :<labe  class="mt-2 text-md text-secondary"> {{us.role}}</labe></div>
+                        </div>
+                    </div>
+                    <div class="grid auto-cols-max grid-flow-col gap-x-8">
+                        <div class="place-self-center w-24 text-center text-2xl text-secondary">
+                            Linked to
+                        </div>
+                        <div class="pl-10 border-l text-md" *ngFor="let us of listuser">
+                            <div class="font-medium">  <a href={{us.linkedin}}> LinkedIn</a><br/></div>
+                            <div class="font-medium">  <a href={{us.git_hub}}> Git_Hub</a><br/></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-x-4 gap-y-1 ml-auto"*ngFor="let us of listuser">
+                    <div class="justify-self-end text-4xl tracking-tight text-secondary"></div>
+                    <div class="text-4xl">{{us.username}}</div>
+                    <div class="justify-self-end font-medium tracking-tight text-secondary"></div>
+                    <div class="font-medium"></div>
+                    <div class="justify-self-end font-medium tracking-tight text-secondary"></div>
+                    <div class="font-medium"></div>
+                    <div class="justify-self-end font-medium tracking-tight text-secondary"></div>
+                    <div class="font-medium"></div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-12 gap-x-1 mt-16" >
+                <!-- Columns -->
+                
+
+                <!-- Divider -->
+                <div class="col-span-12 my-4 border-b"></div>
+
+                <!-- Item -->
+                <div class="col-span-8" >
+                    <div class="text-lg font-medium">Headline</div>
+                    <div class="mt-2 text-md text-secondary"*ngFor="let us of listuser">{{us.headline}}
+                    </div>
+                </div>
+                
+                <!-- Spacer -->
+                
+                <!-- Divider -->
+                <div class="col-span-12 my-3 border-b"></div>
+
+                <!-- Total -->
+                
+            </div>
+
+            <div class="mt-16">
+                <div class="flex items-start mt-4" style="margin-right:800px  !important; width: 200px;">
+              
+                 <button
+                 *ngFor="let us of listuser"
+                 class="w-full min-h-8 h-8 lg:min-h-10 lg:h-10 mt-3 lg:mt-6"
+                 mat-flat-button
+                 [color]="'primary'"(click)="UpdateUser(us.id)">
+                 Edit Profil
+                 </button>
+                    <div class="ml-6 text-sm text-secondary">
+                       
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

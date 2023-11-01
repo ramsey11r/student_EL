@@ -1,0 +1,130 @@
+
+
+
+
+
+
+
+<!-- component -->
+<section class="max-w-4xl p-6 mx-auto bg-indigo-600 rounded-md shadow-md dark:bg-gray-800 mt-20" style="width: 70% ; background-color:rgba(3, 27, 60, 0.838) !important;">
+  <div style="display: flex; justify-content: space-between; align-items: center;">
+    <h1  class="text-xl font-bold text-white capitalize dark:text-white" style="margin-bottom: 45px;">TEST</h1>
+    <div *ngIf="showNbPage" style="color: white; font-size: 18px; font-weight: bold; text-align: right; margin-bottom: 50px;">{{currentPage}} / {{test_Data.length}}</div>
+  </div>
+  
+
+<div class="main">
+  <div *ngIf="timeShow" style="color: white; font-size: 20px; font-weight: bold; margin-bottom: 20px;">{{ remainingTime | date:'mm:ss' }}</div>
+  
+  <div *ngFor="let test of displayedTests">
+    <fuse-card class="flex flex-col max-w-80 w-full filter-info" *ngIf="test.test_task_type === 'A'">
+      <h3 class="mb-4 font-semibold text-gray-900 dark:text-white custom-heading" [innerHTML]="test.sanitizedQuestion"></h3>
+      <ul class="w-48 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white div-ul">
+        <li class="w-full border-b border-gray-200 rounded-t-lg dark:border-gray-600">
+          <div class="flex items-center pl-3" *ngIf="test.test_fq1">
+            <input id="laravel-checkbox1" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" (change)="handleCheckboxChange()">
+            <label for="laravel-checkbox1" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{test.test_fq1}}</label>
+          </div>
+          <div class="flex items-center pl-3" *ngIf="test.test_fq2">
+            <input id="laravel-checkbox2" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" (change)="handleCheckboxChange()">
+            <label for="laravel-checkbox2" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{test.test_fq2}}</label>
+          </div>
+          <div class="flex items-center pl-3" *ngIf="test.test_fq3">
+            <input id="laravel-checkbox3" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" (change)="handleCheckboxChange()">
+            <label for="laravel-checkbox3" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{test.test_fq3}}</label>
+          </div>
+          <div class="flex items-center pl-3" *ngIf="test.test_tq1">
+            <input (change)="updatePoints($event.target.checked, 1)" id="laravel-checkbox4" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" (change)="handleCheckboxChange()">
+            <label for="laravel-checkbox4" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{test.test_tq1}}</label>
+          </div>
+          <div class="flex items-center pl-3" *ngIf="test.test_tq2">
+            <input (change)="updatePoints($event.target.checked, 2)" id="laravel-checkbox5" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500" (change)="handleCheckboxChange()">
+            <label for="laravel-checkbox5" class="w-full py-3 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{test.test_tq2}}</label>
+          </div>
+        </li>
+      </ul>
+    </fuse-card>
+    <fuse-card class="flex flex-col max-w-80 w-full filter-info" *ngIf="test.test_task_type === 'B'">
+      <div class="content-div">
+        <h3 class="text-2xl font-semibold leading-tight" [innerHTML]="test.sanitizedQuestion"></h3>
+        
+        
+        
+        <div class="div_label_input">
+          <div class="flex items-center mb-4">
+            <div class="tr-fls">
+              <input id="default-radio-1" type="radio" value="true" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" (change)="updatePoints_tf($event.target.checked,true, test)">
+              <label for="default-radio-1" class="text-secondary leading-tight mt-1">true</label>
+            </div>
+          </div>
+          <div class="flex items-center">
+            <div class="tr-fls">
+              <input id="default-radio-2" type="radio" value="false" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" (change)="updatePoints_tf($event.target.checked,false, test)">
+              <label for="default-radio-2" class="text-secondary leading-tight mt-1">false</label>
+            </div>
+          </div>
+        </div>
+        
+        
+        
+      
+    </div>
+    </fuse-card>
+  </div>
+  
+  
+  
+  
+<div *ngIf="showMessage" >
+  
+  <p style="color: white; font-size: 32px;">Your Score Is : {{f_socre.toFixed(2)}} / {{this.test_Data.length}}</p>
+
+  <div *ngIf="f_socre >= (0.8 * this.test_Data.length)">
+  
+      <p class="flashing-text">Congratulation! </p>
+   
+    <div style="overflow: hidden;">
+      <img style="height: 300px; border-radius: 50%;" src="https://img.freepik.com/premium-vector/graduation-cap-vector-icon-isolated-white-university-college-graduation-hat-with-tassel-element-design-banner-poster-sticker-flyer-logo-design-etc_656810-1426.jpg">
+    </div>
+
+    <button  (click)="SendCourNameToCertifPage()" type="button" class="px-6 py-3.5 text-base font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" style="margin-top: 40px; margin-left: 95px;">Get Certificat</button>
+  </div>
+  <div *ngIf="f_socre < (0.8 * this.test_Data.length)">
+    <img style="height: 300px; border-radius: 50%; margin-top: 30px;" src="https://static.vecteezy.com/system/resources/previews/011/188/608/original/try-again-text-symbol-stamp-red-rubber-stamp-sticker-icon-symbolizing-trying-again-persistence-and-determination-concept-design-vector.jpg">
+    
+
+    <button type="button" class="px-6 py-3.5 text-base font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" style="margin-top: 40px; margin-left: 130px;" [routerLink]="'/apps/home'">Back</button>
+
+  </div>
+  
+  
+
+
+</div>
+
+
+
+
+
+  
+  
+  <div class="flex div-bt" *ngIf="showButtons">
+   
+    <a (click)="previousPage()"  class="flex items-center justify-center px-3 h-8 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+      Previous
+    </a>
+  
+   
+    <a (click)="nextPage()" class="flex items-center justify-center px-3 h-8 ml-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+      Next
+    </a>
+  </div>
+
+</div>
+
+
+
+
+ 
+</section>
+

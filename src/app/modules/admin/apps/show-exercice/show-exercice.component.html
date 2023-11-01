@@ -1,0 +1,38 @@
+<section class="max-w-4xl p-6 mx-auto bg-indigo-600 rounded-md shadow-md dark:bg-gray-800 mt-20" style="width: 70%; background-color: rgba(3, 27, 60, 0.838) !important;">
+  <div style="display: flex; justify-content: space-between; align-items: center;">
+    <h1 class="text-xl font-bold text-white capitalize dark:text-white" style="margin-bottom: 45px;">Exercice</h1>
+    <div style="color: white; font-size: 18px; font-weight: bold; text-align: right; margin-bottom: 50px;">{{currentPage}} / {{exercice.length}}</div>
+  </div>
+ 
+
+  <div *ngFor="let e of displayedTests" class="container" style="border-radius: 8px; padding-bottom: 30px;">
+    <div style="display: flex; align-items: center; justify-content: center; margin-top: 50px;">
+      
+      <p style="color: white;margin-top: 20px; font-size: 20px; font-weight: bold;" class="div2">{{e.question}}</p>
+   
+    </div>
+
+    <form [formGroup]="answerForm">
+      <div class="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600" style="margin-top: 50px;">
+        <div class="px-4 py-2 bg-white rounded-t-lg dark:bg-gray-800">
+          <textarea #answerInput id="comment" rows="4" class="w-full px-0 text-sm text-gray-900 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Write an answer..." required></textarea>
+        </div>
+        <div class="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
+          <button (click)="add_answer(e.question, answerInput.value)" type="submit" class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
+            Post comment
+          </button>
+        </div>
+      </div>
+      
+    </form>
+
+    <div class="flex justify-center mt-5 mb-3">
+      <a (click)="previousPage()" style="cursor: pointer;" class="flex items-center justify-center px-3 h-8 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+        Previous
+      </a>
+      <a (click)="nextPage()" style="cursor: pointer;" class="flex items-center justify-center px-3 h-8 ml-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+        Next
+      </a>
+    </div>
+  </div>
+</section>

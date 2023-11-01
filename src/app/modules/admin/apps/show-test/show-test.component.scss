@@ -1,0 +1,83 @@
+.main {
+    display: flex;
+    flex-direction: column; /* Align items vertically */
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Set the height to occupy the full viewport height */
+    
+  }
+
+  .div-bt{
+    margin-top: 40px;
+
+  }
+
+  .div2{
+    background-color: white;
+
+    width: 500px;
+    height: 300px;
+    border-radius: 8px;
+  }
+
+  .content-div{
+    text-align: center;
+
+  }
+
+  .custom-heading {
+  
+    font-size: 25px;
+    text-align: center;
+  }
+  
+
+  .div_label_input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 20vh; /* Adjust the height if needed */
+  }
+  
+  .tr-fls {
+    margin: auto;
+  }
+  
+
+
+  .div-ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+  
+  }
+
+  
+  @keyframes flashing {
+    0% {
+      color: white;
+      
+    }
+    50% {
+      color: yellow;
+      
+    }
+    100% {
+      color: white;
+    }
+  }
+  
+  .flashing-text {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 25px;
+    text-align: center;
+    animation: flashing 1s infinite;
+    margin-bottom: 20px;
+
+    color: white;
+  }
+  

@@ -1,0 +1,206 @@
+<div  class="relative flex flex-col flex-auto min-w-0 overflow-hidden">
+<ul class="space-y-2">
+  <button (click)="show_exerciceName(lesson[0].chapters)"  type="button"
+  class="fuse-mat-button-large mt-10 fade-in-animation"
+  mat-flat-button
+  [color]="'primary'" style="width: 100px; margin-left: 42%; margin-bottom: 20px;">
+    EXERCICES
+  </button>
+  <li class="rounded p-4 shadow-lg cursor-pointer list-item ring-2 ring-primary overflow-visible"  *ngFor="let l of lesson; let i = index" (click)="show_lessonsContent(l.titles, l.discription)">
+    <span class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">{{ l.titles }}</span>
+    <div class="mt-6" style=" overflow: auto !important;">{{ l.discription }}</div>
+    
+  </li>
+ 
+</ul>
+<footer  class="bg-white dark:bg-gray-900 w-full" style="margin-top: 60px !important; display: flex !important; justify-content: center !important; align-items: center !important;"*ngFor="let qa of list">
+  <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="lg:flex lg:items-start lg:gap-8">
+      <div class="text-teal-600 dark:text-teal-300">
+        <svg
+          class="h-8"
+          viewBox="0 0 28 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0.41 10.3847C1.14777 7.4194 2.85643 4.7861 5.2639 2.90424C7.6714 1.02234 10.6393 0 13.695 0C16.7507 0 19.7186 1.02234 22.1261 2.90424C24.5336 4.7861 26.2422 7.4194 26.98 10.3847H25.78C23.7557 10.3549 21.7729 10.9599 20.11 12.1147C20.014 12.1842 19.9138 12.2477 19.81 12.3047H19.67C19.5662 12.2477 19.466 12.1842 19.37 12.1147C17.6924 10.9866 15.7166 10.3841 13.695 10.3841C11.6734 10.3841 9.6976 10.9866 8.02 12.1147C7.924 12.1842 7.8238 12.2477 7.72 12.3047H7.58C7.4762 12.2477 7.376 12.1842 7.28 12.1147C5.6171 10.9599 3.6343 10.3549 1.61 10.3847H0.41ZM23.62 16.6547C24.236 16.175 24.9995 15.924 25.78 15.9447H27.39V12.7347H25.78C24.4052 12.7181 23.0619 13.146 21.95 13.9547C21.3243 14.416 20.5674 14.6649 19.79 14.6649C19.0126 14.6649 18.2557 14.416 17.63 13.9547C16.4899 13.1611 15.1341 12.7356 13.745 12.7356C12.3559 12.7356 11.0001 13.1611 9.86 13.9547C9.2343 14.416 8.4774 14.6649 7.7 14.6649C6.9226 14.6649 6.1657 14.416 5.54 13.9547C4.4144 13.1356 3.0518 12.7072 1.66 12.7347H0V15.9447H1.61C2.39051 15.924 3.154 16.175 3.77 16.6547C4.908 17.4489 6.2623 17.8747 7.65 17.8747C9.0377 17.8747 10.392 17.4489 11.53 16.6547C12.1468 16.1765 12.9097 15.9257 13.69 15.9447C14.4708 15.9223 15.2348 16.1735 15.85 16.6547C16.9901 17.4484 18.3459 17.8738 19.735 17.8738C21.1241 17.8738 22.4799 17.4484 23.62 16.6547ZM23.62 22.3947C24.236 21.915 24.9995 21.664 25.78 21.6847H27.39V18.4747H25.78C24.4052 18.4581 23.0619 18.886 21.95 19.6947C21.3243 20.156 20.5674 20.4049 19.79 20.4049C19.0126 20.4049 18.2557 20.156 17.63 19.6947C16.4899 18.9011 15.1341 18.4757 13.745 18.4757C12.3559 18.4757 11.0001 18.9011 9.86 19.6947C9.2343 20.156 8.4774 20.4049 7.7 20.4049C6.9226 20.4049 6.1657 20.156 5.54 19.6947C4.4144 18.8757 3.0518 18.4472 1.66 18.4747H0V21.6847H1.61C2.39051 21.664 3.154 21.915 3.77 22.3947C4.908 23.1889 6.2623 23.6147 7.65 23.6147C9.0377 23.6147 10.392 23.1889 11.53 22.3947C12.1468 21.9165 12.9097 21.6657 13.69 21.6847C14.4708 21.6623 15.2348 21.9135 15.85 22.3947C16.9901 23.1884 18.3459 23.6138 19.735 23.6138C21.1241 23.6138 22.4799 23.1884 23.62 22.3947Z"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
+
+      <div
+        class="mt-8 grid grid-cols-2 gap-8 lg:mt-0 lg:grid-cols-5 lg:gap-y-16"
+      >
+        <div class="col-span-2">
+          <div>
+            <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
+              E-Learning Apps
+            </h2>
+
+            <div class="mt-4 text-gray-500 dark:text-gray-400">
+              Unlocking Knowledge, One Lesson at a Time!
+            </div>
+          </div>
+        </div>
+
+        <div class="col-span-2 lg:col-span-3 lg:flex lg:items-end">
+          <form class="w-full">
+           
+
+            <div
+              class="border border-gray-100 p-2 focus-within:ring dark:border-gray-800 sm:flex sm:items-center sm:gap-4"
+              *ngFor="let er of email_List" >
+              <input readonly
+                type="email"
+                id="UserEmail"
+                value="Unlock new horizons through our professional collaboration !"
+               
+                class="text-black w-full border-none focus:border-transparent focus:ring-transparent dark:bg-gray-900 dark:text-white sm:text-sm"
+              />
+
+              <a href="mailto:{{er.email}}" class="animate-pulse animate-infinite animate-ease-in mt-1 w-full bg-teal-500 px-6 py-3 text-sm font-bold uppercase tracking-wide text-white transition-none hover:bg-teal-600 sm:mt-0 sm:w-auto sm:shrink-0">
+                Collaborate
+              </a>
+              
+            </div>
+          </form>
+        </div>
+
+        <div class="col-span-2 sm:col-span-1" style="margin-left: 50px !important;">
+          <button (click)="about()" class="font-medium text-primary-600">About-us</button>
+
+       
+        </div>
+
+        <div class="col-span-2 sm:col-span-1">
+          <button (click)="partner()" class="font-medium text-primary-600">Partners and Affiliates</button>
+
+        
+        </div>
+
+        <div class="col-span-2 sm:col-span-1" style="margin-left: 30px !important;">
+          <button (click)="contact()" class="font-medium text-primary-600">Contact-us !</button>
+         
+        </div>
+
+        <div class="col-span-2 sm:col-span-1">
+          <button (click)="meet()" class="font-medium text-primary-600">Meet the Team</button>
+
+      
+        </div>
+
+        <div class="col-span-2 sm:col-span-1">
+          <button (click)="profil()" class="font-medium text-primary-600">Your profil</button>
+
+          
+        </div>
+
+    
+
+       
+
+        <ul
+        class="col-span-2 flex justify-start gap-6 lg:col-span-5" style="margin: auto !important;margin-left: 345px !important;">
+        <li>
+          <a
+            href={{qa.facebook}}
+            rel="noreferrer"
+            target="_blank"
+            class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+          >
+            <span class="sr-only">Facebook</span>
+
+            <svg
+              class="h-6 w-6 hover:text-blue-800"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+            <path
+            d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+            </svg>
+          </a>
+        </li>
+
+        <li>
+          <a
+          href={{qa.instagram}}
+            rel="noreferrer"
+            target="_blank"
+            class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+          >
+            <span class="sr-only">Instagram</span>
+
+            <svg
+              class="h-6 w-6 hover:text-red-500"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+            <path
+            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+            </svg>
+          </a>
+        </li>
+
+        <li>
+          <a
+          href={{qa.linkedin}}
+            rel="noreferrer"
+            target="_blank"
+            class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+          >
+            <span class="sr-only">LinkedIn</span>
+
+            <svg
+            
+              class="h-6 w-6 hover:text-blue-500" 
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+            <path
+        d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+       
+      </svg>
+          </a>
+        </li>
+
+        <li>
+          <a
+          href={{qa.github}}
+            rel="noreferrer"
+            target="_blank"
+            class="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
+          >
+            <span class="sr-only">GitHub</span>
+
+            <svg
+              class="h-6 w-6 hover:text-dark-800"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+            <path
+            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+            </svg>
+          </a>
+        </li>
+
+    
+      </ul>
+      </div>
+    </div>
+
+    <div class="mt-8 border-t border-gray-100 pt-8 dark:border-gray-800" style="margin-left: 430px !important;">
+      <div class="sm:flex sm:justify-between">
+        <div class="text-xs text-gray-500 dark:text-gray-400 text-center">
+          &copy; {{currentYear}}. E-Learning . All rights reserved.
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+</div>
